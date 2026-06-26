@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IA docente: rizoma de recursos</title>
+  <meta name="description" content="Sitio de una sola página con rizoma interactivo y recursos incrustados sobre inteligencia artificial y práctica docente." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+ 
+  <main>
+    <section class="rizoma-card" aria-labelledby="rizoma-title">
+      <div class="section-heading">
+        <p class="eyebrow">Mapa de navegación</p>
+        <h2 id="rizoma-title">Tocá una arista para abrir el recurso sin salir del sitio</h2>
+      </div>
+
+      <div class="rizoma-canvas" role="group" aria-label="Rizoma de recursos">
+        <svg class="edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M 13 25 C 20 25, 25 40, 33 50" />
+          <path d="M 13 50 C 20 50, 25 50, 33 50" />
+          <path d="M 13 75 C 20 75, 25 60, 33 50" />
+          <path d="M 33 50 C 39 50, 44 50, 50 50" />
+          <path d="M 50 50 C 56 50, 61 50, 67 50" />
+          <path d="M 67 50 C 75 50, 79 36, 88 36" />
+          <path d="M 67 50 C 75 52, 79 68, 88 68" />
+        </svg>
+
+        <button class="node node--left" data-resource="articulo" style="--x:13%; --y:25%">
+          <span class="plus">+</span>
+          <strong>Artículo</strong>
+          <small>reflexión docente</small>
+        </button>
+
+        <button class="node node--left" data-resource="presentacion" style="--x:13%; --y:50%">
+          <span class="plus">+</span>
+          <strong>Presentación</strong>
+          <small>marcadores vs algoritmos</small>
+        </button>
+
+        <button class="node node--left" data-resource="fundamentaciones" style="--x:13%; --y:75%">
+          <span class="plus">+</span>
+          <strong>Fundamentaciones</strong>
+          <small>marco teórico</small>
+        </button>
+
+        <button class="node node--media" data-resource="video" style="--x:33%; --y:50%">
+          <span class="icon">▻</span>
+          <strong>Video</strong>
+          <small>dos piezas audiovisuales</small>
+        </button>
+
+        <div class="center-node" style="--x:50%; --y:50%">
+          <span>“La eficiencia<br />sustituye<br />al que enseña”</span>
+        </div>
+
+        <button class="node node--media" data-resource="audio" style="--x:67%; --y:50%">
+          <span class="icon">🎙️</span>
+          <strong>Audio</strong>
+          <small>relato / explicación</small>
+        </button>
+
+        <button class="node node--right" data-resource="ilustracion" style="--x:88%; --y:36%">
+          <span class="plus">+</span>
+          <strong>Ilustración</strong>
+          <small>escena docente</small>
+        </button>
+
+        <button class="node node--right" data-resource="mapa" style="--x:88%; --y:68%">
+          <span class="plus">+</span>
+          <strong>Mapa</strong>
+          <small>esquema conceptual</small>
+        </button>
+      </div>
+    </section>
+
+    
+  </main>
+
+  <dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+    <div class="viewer__bar">
+      <div>
+        <p class="eyebrow" id="viewer-type">Recurso</p>
+        <h2 id="viewer-title">Título</h2>
+      </div>
+      <button class="close" id="close-viewer" type="button" aria-label="Cerrar recurso">×</button>
+    </div>
+    <div class="viewer__body" id="viewer-body"></div>
+  </dialog>
+
+  <template id="tpl-articulo" data-title="Artículo" data-type="Lectura principal">
+    <div class="resource-layout">
+      <div class="resource-copy">
+        <h3>La inteligencia artificial como lubricante y como abrasivo</h3>
+        <p>El artículo trabaja la tensión entre el alivio burocrático que promete la IA y el riesgo de precarización algorítmica cuando la eficiencia reemplaza la deliberación docente.</p>
+        <div class="actions">
+          <a href="assets/pdf/documento_ia_practica_docente.pdf" download>Descargar PDF</a>
+          <a href="assets/documento_ia_practica_docente.docx" download>Descargar DOCX</a>
+        </div>
+      </div>
+      <iframe class="embed-doc" src="assets/pdf/documento_ia_practica_docente.pdf#view=FitH" title="Artículo en PDF"></iframe>
+    </div>
+  </template>
+
+  <template id="tpl-presentacion" data-title="Presentación" data-type="Diapositivas">
+    <div class="resource-layout">
+      <div class="resource-copy">
+        <h3>Marcadores vs algoritmos</h3>
+        <p>Presentación incrustada como PDF para que pueda verse dentro de la página. También queda disponible el archivo PPTX original.</p>
+        <div class="actions">
+          <a href="assets/pdf/presentacion_marcadores_vs_algoritmos.pdf" download>Descargar PDF</a>
+          <a href="assets/presentacion_marcadores_vs_algoritmos.pptx" download>Descargar PPTX</a>
+        </div>
+      </div>
+      <iframe class="embed-doc" src="assets/pdf/presentacion_marcadores_vs_algoritmos.pdf#view=FitH" title="Presentación en PDF"></iframe>
+    </div>
+  </template>
+
+  <template id="tpl-fundamentaciones" data-title="Fundamentaciones" data-type="Marco teórico">
+    <div class="theory-grid">
+      <article>
+        <h3>Transparencia como control</h3>
+        <p>Byung-Chul Han permite pensar la documentación escolar como régimen de visibilidad: cuando todo debe quedar expuesto, la confianza se reemplaza por control.</p>
+      </article>
+      <article>
+        <h3>Deliberación algorítmica</h3>
+        <p>Innerarity ayuda a distinguir procedimiento automático y juicio colectivo: no todo lo eficiente es pedagógicamente justo.</p>
+      </article>
+      <article>
+        <h3>Ecologías mediáticas</h3>
+        <p>Scolari permite ubicar la IA dentro de una red de interfaces, lenguajes y prácticas que transforman cómo se enseña y se aprende.</p>
+      </article>
+      <article>
+        <h3>Escuela como refugio y campo de batalla</h3>
+        <p>Magro habilita una lectura no tecnofóbica: la IA puede acompañar, pero no debe vaciar el vínculo pedagógico.</p>
+      </article>
+      <article>
+        <h3>Tecnología, poder y trabajo docente</h3>
+        <p>Ozollo permite leer la incorporación tecnológica como decisión política sobre tiempos, tareas, control y autonomía profesional.</p>
+      </article>
+      <article>
+        <h3>Pedagogías emergentes</h3>
+        <p>Adell y Castañeda funcionan como brújula para no limitar la IA a una sustitución rápida de prácticas viejas.</p>
+      </article>
+    </div>
+  </template>
+
+  <template id="tpl-video" data-title="Video" data-type="Material audiovisual">
+  <div class="video-grid">
+    
+    <article>
+      <h3>Descripción del marco teórico</h3>
+
+      <div class="video-responsive">
+        <iframe
+          src="https://drive.google.com/file/d/1qcoBVgj7O117pEV8PccQkD5i-j2i33dt/preview"
+          title="Descripción del marco teórico"
+          allow="autoplay"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </article>
+
+    <article>
+      <h3>Docentes discutiendo algoritmos</h3>
+
+      <div class="video-responsive">
+        <video controls preload="metadata">
+          <source src="assets/video_docentes_discutiendo_algoritmos.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+        </video>
+      </div>
+    </article>
+
+  </div>
+</template>
+
+  <template id="tpl-audio" data-title="Audio" data-type="Recurso sonoro">
+    <div class="audio-panel">
+      <h3>Docente frente a la IA</h3>
+      <p>Reproductor de audio integrado. No abre otra pestaña ni depende de servicios externos.</p>
+      <audio controls preload="metadata" src="assets/audio_docente_frente_ala_IA.mp3"></audio>
+    </div>
+  </template>
+
+  <template id="tpl-ilustracion" data-title="Ilustración" data-type="Imagen">
+    <figure class="image-view">
+      <img src="assets/imagen_docentes_ia.png" alt="Docentes reunidos en una sala de profesores trabajando con computadoras, planillas y documentos escolares." />
+      <figcaption>Escena visual para acompañar la reflexión sobre IA, burocracia y trabajo docente.</figcaption>
+    </figure>
+  </template>
+
+  <template id="tpl-mapa" data-title="Mapa" data-type="Esquema conceptual">
+    <figure class="image-view image-view--dark">
+      <img src="assets/esquema_conceptual_IA_docente.png" alt="Esquema conceptual sobre inteligencia artificial, Estado empleador, docente contratado, efecto lubricante, efecto abrasivo y horizonte ético." />
+      <figcaption>Mapa conceptual del eje IA como lubricante / abrasivo y sus derivaciones pedagógicas.</figcaption>
+    </figure>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
